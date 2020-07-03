@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.zerock.domain.BoardVO;
+import org.zerock.domain.Criteria;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -32,8 +33,8 @@ public class BoardServiceTests {
 	public void testRegister() {
 		
 		BoardVO board = new BoardVO();
-		board.setTitle("새로 작성하는 글 2020 06 23");
-		board.setContent("새로 작성하는 내용 2020 06 23");
+		board.setTitle("새로 작성하는 글 2020 07 03");
+		board.setContent("새로 작성하는 내용 2020 07 03");
 		board.setWriter("뉴비");
 		
 		log.info("생성된 게시물의 번호1: " + board.getBno());
@@ -45,7 +46,8 @@ public class BoardServiceTests {
 	
 	@Test
 	public void testGetList() {
-		service.getList().forEach(board -> log.info(board));
+//		service.getList().forEach(board -> log.info(board));
+		service.getList(new Criteria(1, 10)).forEach(board -> log.info(board));
 	}
 	
 	@Test
